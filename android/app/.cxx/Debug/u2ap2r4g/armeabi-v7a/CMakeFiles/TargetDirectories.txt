@@ -1,0 +1,2 @@
+C:/Users/Pragyan Kadel/OneDrive/Desktop/tech_rental/android/app/.cxx/Debug/u2ap2r4g/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/Pragyan Kadel/OneDrive/Desktop/tech_rental/android/app/.cxx/Debug/u2ap2r4g/armeabi-v7a/CMakeFiles/rebuild_cache.dir

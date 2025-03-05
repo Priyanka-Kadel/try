@@ -1,0 +1,2 @@
+/Users/sas/Desktop/borrowbox/tech_rental/android/app/.cxx/Debug/5l6n5a2z/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/sas/Desktop/borrowbox/tech_rental/android/app/.cxx/Debug/5l6n5a2z/armeabi-v7a/CMakeFiles/rebuild_cache.dir

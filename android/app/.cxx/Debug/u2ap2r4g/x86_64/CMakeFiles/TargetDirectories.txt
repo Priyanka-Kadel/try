@@ -1,0 +1,2 @@
+C:/Users/Pragyan Kadel/OneDrive/Desktop/tech_rental/android/app/.cxx/Debug/u2ap2r4g/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/Pragyan Kadel/OneDrive/Desktop/tech_rental/android/app/.cxx/Debug/u2ap2r4g/x86_64/CMakeFiles/rebuild_cache.dir
