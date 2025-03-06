@@ -28,40 +28,67 @@ class _ProfilePageState extends State<ProfilePage> {
   // Variables for shake detection
   double x = 0.0, y = 0.0, z = 0.0;
   double previousX = 0.0, previousY = 0.0, previousZ = 0.0;
-  static const double shakeThreshold = 100;
+  static const double shakeThreshold = 10;
 
   late StreamSubscription<AccelerometerEvent> _accelerometerSubscription;
 
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _userFuture = authDataSource.getCurrentUser(); // Fetch user data
+
+  //   // Listen to the accelerometer data for shake detection
+  //   _accelerometerSubscription =
+  //       accelerometerEvents.listen((AccelerometerEvent event) {
+  //     x = event.x;
+  //     y = event.y;
+  //     z = event.z;
+
+  //     // Calculate change in acceleration
+  //     double deltaX = x - previousX;
+  //     double deltaY = y - previousY;
+  //     double deltaZ = z - previousZ;
+
+  //     // Calculate total movement
+  //     double totalMovement =
+  //         (deltaX * deltaX) + (deltaY * deltaY) + (deltaZ * deltaZ);
+
+  //     // If total movement exceeds the threshold, trigger logout
+  //     if (totalMovement > shakeThreshold) {
+  //       _logoutUser();
+  //     }
+
+  //     // Update previous values
+  //     previousX = x;
+  //     previousY = y;
+  //     previousZ = z;
+  //   });
+  // }
   @override
   void initState() {
     super.initState();
     _userFuture = authDataSource.getCurrentUser(); // Fetch user data
 
-    // Listen to the accelerometer data for shake detection
     _accelerometerSubscription =
         accelerometerEvents.listen((AccelerometerEvent event) {
-      x = event.x;
-      y = event.y;
-      z = event.z;
+      double acceleration =
+          (event.x * event.x) + (event.y * event.y) + (event.z * event.z);
+      double prevAcceleration = (previousX * previousX) +
+          (previousY * previousY) +
+          (previousZ * previousZ);
 
-      // Calculate change in acceleration
-      double deltaX = x - previousX;
-      double deltaY = y - previousY;
-      double deltaZ = z - previousZ;
+      // Compute the difference in acceleration
+      double deltaAcceleration = (acceleration - prevAcceleration).abs();
 
-      // Calculate total movement
-      double totalMovement =
-          (deltaX * deltaX) + (deltaY * deltaY) + (deltaZ * deltaZ);
-
-      // If total movement exceeds the threshold, trigger logout
-      if (totalMovement > shakeThreshold) {
+      // Use a higher threshold to detect any type of shake
+      if (deltaAcceleration > shakeThreshold) {
         _logoutUser();
       }
 
       // Update previous values
-      previousX = x;
-      previousY = y;
-      previousZ = z;
+      previousX = event.x;
+      previousY = event.y;
+      previousZ = event.z;
     });
   }
 
